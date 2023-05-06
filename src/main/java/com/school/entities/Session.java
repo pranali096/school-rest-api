@@ -8,17 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="classes")
-public class Classes {
+@Table(name="Session")
+public class Session {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@Column(name = "Id")
 	private Long id;
 	
-	@Column(name="Classes_Name")
-	private String className;
+	@Column(name = "year")
+	private String Year;
 
-	public Classes() {
+	public Session() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -31,17 +31,17 @@ public class Classes {
 		this.id = id;
 	}
 
-	public String getClassName() {
-		return className;
+	public String getYear() {
+		return Year;
 	}
 
-	public void setClassName(String className) {
-		this.className = className;
+	public void setYear(String year) {
+		Year = year;
 	}
 
 	@Override
 	public String toString() {
-		return "Classes [id=" + id + ", className=" + className + "]";
+		return "Session [id=" + id + ", Year=" + Year + "]";
 	}
 	
 	
