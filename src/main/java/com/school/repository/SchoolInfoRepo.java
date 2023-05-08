@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.school.entities.SchoolInfo;
 
 @Repository
+
 public interface SchoolInfoRepo extends JpaRepository<SchoolInfo, Integer> {
 
 }

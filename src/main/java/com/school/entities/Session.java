@@ -13,7 +13,7 @@ public class Session {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
-	private int id;
+	private Integer id;
 
 	@Column(name="year")
 	private String year;
@@ -21,11 +21,11 @@ public class Session {
 //	@OneToMany(mappedBy = "session")
 //	Set<Students> students;
  
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
