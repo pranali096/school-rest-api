@@ -29,6 +29,12 @@ public class SchoolinfoServiceImpl implements SchoolInfoService{
 		return inforepo.save(info);
 	}
 
+	@Override
+	public SchoolInfo updateschoolonfo(SchoolInfo sinfo) {
+		
+		return inforepo.save(sinfo);
+	}
+
 	
 
 
