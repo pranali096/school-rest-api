@@ -1,5 +1,7 @@
 package com.school.classes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,11 @@ public class Classesserviceimpl implements Classesservice{
 		return classesrepository.save(classes);
 	}
 
+	@Override
+	public List<Classes> getAllClasses(Classes Class) {
+		
+		return classesrepository.findAll();
 	
+
+	}	
 }
