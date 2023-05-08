@@ -8,29 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="parent_tb")
+@Table(name = "parent_tb")
 public class Parent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Id")
 	private Long id;
-	
-	@Column(name = "Name")
-	private String Name;
-	
-	@Column(name = "Address")
-	private String Address;
-	
-	@Column(name = "Email")
-	private String Email;
-	
-	@Column(name = "mobNo.")
-    private String MobNo;
 
-	public Parent() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "address")
+	private String address;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "mobile_number")
+	private String mobNo;
 
 	public Long getId() {
 		return id;
@@ -41,50 +36,37 @@ public class Parent {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
 	public String getMobNo() {
-		return MobNo;
+		return mobNo;
 	}
 
 	public void setMobNo(String mobNo) {
-		MobNo = mobNo;
+		this.mobNo = mobNo;
 	}
 
-	@Override
-	public String toString() {
-		return "Parent [id=" + id + ", Name=" + Name + ", Address=" + Address + ", Email=" + Email + ", MobNo=" + MobNo
-				+ "]";
-	}
 	
-	
+
 }
-
-
-
-
-
-
-
-

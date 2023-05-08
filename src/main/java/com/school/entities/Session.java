@@ -17,7 +17,10 @@ public class Session {
 
 	@Column(name="year")
 	private String year;
-
+	
+//	@OneToMany(mappedBy = "session")
+//	Set<Students> students;
+ 
 	public int getId() {
 		return id;
 	}
