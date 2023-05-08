@@ -13,104 +13,99 @@ public class SchoolInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private Long scId;
+	private Integer id;
 
 	@Column(name = "name")
-	private String scName;
+	private String name;
 
 	@Column(name = "founder")
-	private String scFounder;
+	private String founder;
 
 	@Column(name = "founded_date")
-	private String scFoundedDate;
+	private String foundedDate;
 	
 	@Column(name = "address")
-	private String scAddress;
+	private String address;
 	
 	@Column(name = "city")
-	private String scCity;
+	private String city;
 	
 	@Column(name = "state")
-	private String scState;
+	private String state;
 	
-	@Column(name = "Phno")
-	private String PhNo;
+	@Column(name = "phno")
+	private String phNo;
 
-	public SchoolInfo() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Integer getId() {
+		return id;
 	}
 
-	public Long getScId() {
-		return scId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setScId(Long scId) {
-		this.scId = scId;
+	public String getName() {
+		return name;
 	}
 
-	public String getScName() {
-		return scName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setScName(String scName) {
-		this.scName = scName;
+	public String getFounder() {
+		return founder;
 	}
 
-	public String getScFounder() {
-		return scFounder;
+	public void setFounder(String founder) {
+		this.founder = founder;
 	}
 
-	public void setScFounder(String scFounder) {
-		this.scFounder = scFounder;
+	public String getFoundedDate() {
+		return foundedDate;
 	}
 
-	public String getScFoundedDate() {
-		return scFoundedDate;
+	public void setFoundedDate(String foundedDate) {
+		this.foundedDate = foundedDate;
 	}
 
-	public void setScFoundedDate(String scFoundedDate) {
-		this.scFoundedDate = scFoundedDate;
+	public String getAddress() {
+		return address;
 	}
 
-	public String getScAddress() {
-		return scAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public void setScAddress(String scAddress) {
-		this.scAddress = scAddress;
+	public String getCity() {
+		return city;
 	}
 
-	public String getScCity() {
-		return scCity;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
-	public void setScCity(String scCity) {
-		this.scCity = scCity;
+	public String getState() {
+		return state;
 	}
 
-	public String getScState() {
-		return scState;
-	}
-
-	public void setScState(String scState) {
-		this.scState = scState;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public String getPhNo() {
-		return PhNo;
+		return phNo;
 	}
 
 	public void setPhNo(String phNo) {
-		PhNo = phNo;
+		this.phNo = phNo;
 	}
 
 	@Override
 	public String toString() {
-		return "SchoolInfo [scId=" + scId + ", scName=" + scName + ", scFounder=" + scFounder + ", scFoundedDate="
-				+ scFoundedDate + ", scAddress=" + scAddress + ", scCity=" + scCity + ", scState=" + scState + ", PhNo="
-				+ PhNo + "]";
-	}	
+		return "SchoolInfo [id=" + id + ", name=" + name + ", founder=" + founder + ", foundedDate=" + foundedDate
+				+ ", address=" + address + ", city=" + city + ", state=" + state + ", phNo=" + phNo + "]";
+	}
+
 	
 	
 	
