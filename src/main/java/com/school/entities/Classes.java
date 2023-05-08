@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="classes")
+@Table(name="classes_tb")
 public class Classes {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +16,7 @@ public class Classes {
 	private Long id;
 	
 	@Column(name="Classes_Name")
-	private String className;
+	private String classesName;
 
 	public Classes() {
 		super();
@@ -32,16 +32,16 @@ public class Classes {
 	}
 
 	public String getClassName() {
-		return className;
+		return classesName;
 	}
 
 	public void setClassName(String className) {
-		this.className = className;
+		this.classesName = className;
 	}
 
 	@Override
 	public String toString() {
-		return "Classes [id=" + id + ", className=" + className + "]";
+		return "Classes [id=" + id + ", className=" + classesName + "]";
 	}
 	
 	

@@ -8,41 +8,38 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Session")
+@Table(name = "Session_tb")
 public class Session {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "Id")
-	private Long id;
-	
-	@Column(name = "year")
-	private String Year;
+	@Column(name="id")
+	private int id;
 
-	public Session() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	@Column(name="year")
+	private String year;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
 	public String getYear() {
-		return Year;
+		return year;
 	}
 
 	public void setYear(String year) {
-		Year = year;
+		this.year = year;
 	}
 
 	@Override
 	public String toString() {
-		return "Session [id=" + id + ", Year=" + Year + "]";
+		return "Session [id=" + id + ", year=" + year + "]";
 	}
-	
-	
+
+
+
+
 }

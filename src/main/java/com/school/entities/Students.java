@@ -1,12 +1,18 @@
 package com.school.entities;
 
 import java.sql.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -18,16 +24,16 @@ public class Students {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private Long id;
+	private Integer sid;
 	
 	@Column(name = "Roll_No.")
-	private Long Rollno;
+	private Integer rollno;
 	
 	@Column(name = "name")
-	private String Name;
+	private String name;
 	
 	@Column(name = "address")
-	private String Address;
+	private String address;
 	
 	@JsonIgnore
 	@Column(name="date")
@@ -35,68 +41,87 @@ public class Students {
 	private Date Birthdate;
 	
 	@Column(name="MobNo")
-	private String Mobno;
-
-	public Students() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getRollno() {
-		return Rollno;
-	}
-
-	public void setRollno(Long rollno) {
-		Rollno = rollno;
-	}
-
-	public String getName() {
-		return Name;
-	}
-
-	public void setName(String name) {
-		Name = name;
-	}
-
-	public String getAddress() {
-		return Address;
-	}
-
-	public void setAddress(String address) {
-		Address = address;
-	}
-
-	public Date getBirthdate() {
-		return Birthdate;
-	}
-
-	public void setBirthdate(Date birthdate) {
-		Birthdate = birthdate;
-	}
-
-	public String getMobno() {
-		return Mobno;
-	}
-
-	public void setMobno(String mobno) {
-		Mobno = mobno;
-	}
-
-	@Override
-	public String toString() {
-		return "Students [id=" + id + ", Rollno=" + Rollno + ", Name=" + Name + ", Address=" + Address + ", Birthdate="
-				+ Birthdate + ", Mobno=" + Mobno + "]";
-	}
+	private String mobno;
 	
 	
+	
+	@OneToMany
+	@JoinColumn(name="id")
+	 private Set<Session> session;
+
+	
+		public int getSid() {
+			return sid;
+		}
+
+
+
+		public void setSid(int sid) {
+			this.sid = sid;
+		}
+
+
+
+		public int getRollno() {
+			return rollno;
+		}
+
+
+
+		public void setRollno(int rollno) {
+			this.rollno = rollno;
+		}
+
+
+
+		public String getName() {
+			return name;
+		}
+
+
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+
+
+		public String getAddress() {
+			return address;
+		}
+
+		public void setAddress(String address) {
+			this.address = address;
+		}
+
+		public Date getBirthdate() {
+			return Birthdate;
+		}
+
+		public void setBirthdate(Date birthdate) {
+			Birthdate = birthdate;
+		}
+		public String getMobno() {
+			return mobno;
+		}
+		public void setMobno(String mobno) {
+			this.mobno = mobno;
+		}
+
+		public Set<Session> getSession() {
+			return session;
+		}
+		public void setSession(Set<Session> session) {
+			this.session = session;
+		}
+
+		@Override
+		public String toString() {
+			return "Students [sid=" + sid + ", rollno=" + rollno + ", name=" + name + ", address=" + address
+					+ ", Birthdate=" + Birthdate + ", mobno=" + mobno + ", session=" + session + "]";
+		}
+	
+		
 }
 
 
