@@ -1,13 +1,9 @@
-package com.school.serviceimpl;
+package com.school.schoolinfo;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.school.entities.SchoolInfo;
-import com.school.repository.SchoolInfoRepo;
-import com.school.service.SchoolInfoService;
 
 
 

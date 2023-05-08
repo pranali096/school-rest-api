@@ -1,9 +1,7 @@
-package com.school.repository;
+package com.school.schoolinfo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.school.entities.SchoolInfo;
 
 @Repository
 

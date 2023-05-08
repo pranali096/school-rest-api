@@ -1,8 +1,6 @@
-package com.school.service;
+package com.school.schoolinfo;
 
 import java.util.List;
-
-import com.school.entities.SchoolInfo;
 
 public interface SchoolInfoService {
  

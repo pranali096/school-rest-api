@@ -1,4 +1,4 @@
-package com.school.entities;
+package com.school.students;
 
 import java.sql.Date;
 
@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.school.session.Session;
 
 @Entity
 @Table(name = "student_tb")
