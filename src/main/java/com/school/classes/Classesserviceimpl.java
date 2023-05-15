@@ -33,10 +33,20 @@ public class Classesserviceimpl implements Classesservice{
 		if (studid.isPresent()) {
 			return "Classes id is Found";
 		}else {
-			throw new RuntimeException(" Classes id id not Found");
+			throw new RuntimeException(" Classes id not Found");
 	
 	}
 
+	}
+
+	@Override
+	public String deleteById(Long cid) {
+		Optional<Classes> op = classesrepository.findById(cid);
+		if (op.isEmpty()) {
+			return " Classes is deleted succusefully";
+		}else {
+			throw new RuntimeException(" Classes is failed to delete");
+		}
 	}
 		
 }

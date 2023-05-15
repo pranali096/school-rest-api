@@ -3,6 +3,7 @@ package com.school.classes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,4 +35,16 @@ public class Classescontroller {
 	public ResponseEntity<?> getClassesById(@PathVariable Long id){
 		return new ResponseEntity<>(classesservice.getClassesById(id),HttpStatus.OK);
 	}
+	
+	@DeleteMapping("/{cid}")
+	public ResponseEntity<?> deleteByid(@PathVariable Long cid){
+		return new ResponseEntity<>(classesservice.deleteById(cid),HttpStatus.OK);
+		
+	}
 }
+
+
+
+
+
+

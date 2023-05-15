@@ -12,4 +12,6 @@ public interface Classesservice {
 	
 	public String getClassesById(Long id);
 	
+	public String deleteById(Long cid);
+	
 }
