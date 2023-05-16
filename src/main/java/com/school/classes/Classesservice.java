@@ -1,17 +1,18 @@
 package com.school.classes;
 
-import java.util.List;
-import java.util.Optional;
+import org.springframework.data.domain.Sort.Direction;
 
 
 public interface Classesservice {
 
 	public  Classes saveclasses( Classes classes);
 	
-	public List<Classes> getAllClasses(Classes Class);
+	public Iterable<Classes> getAllClasses();
 	
 	public String getClassesById(Long id);
 	
 	public String deleteById(Long cid);
+	
+	public String getAllClassesByPagination(Integer pageNo,Integer pageSize,String sortBy,Direction sortOrder,int isPagination);
 	
 }
