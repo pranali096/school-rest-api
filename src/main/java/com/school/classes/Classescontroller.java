@@ -1,5 +1,9 @@
 package com.school.classes;
 
+import java.lang.invoke.MethodHandles;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/classes")
 public class Classescontroller {
+	private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Autowired
 	Classesservice classesservice;
@@ -38,6 +43,7 @@ public class Classescontroller {
 			@RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy,
 			@RequestParam("sortorder") Direction sortOrder,
 			@RequestParam(name = "isPagination", required = false, defaultValue = "1") int isPagination){
+		LOG.info("Getting list of income details");
 		return new ResponseEntity<> (classesservice.getAllClassesByPagination(pageNo, pageSize, sortBy, sortOrder, isPagination),HttpStatus.OK);
 					
 	}

@@ -29,6 +29,7 @@ public class Schoolinfocontroller {
 		
 		return new ResponseEntity<>(infoservice.saveschoolinfo(info),HttpStatus.OK);
 	}
+	
 	@PutMapping("/updateinfo")
 	public ResponseEntity<?>updateinfo(@RequestBody SchoolInfo sinfo){
 		return new ResponseEntity<>(infoservice.updateschoolonfo(sinfo),HttpStatus.OK);
