@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.school.classes.Classes;
 
 @Entity
 @Table(name="divisions_tb")
@@ -17,6 +21,10 @@ public class Divisions {
 	
 	@Column(name = "divisions")
 	private String Division;
+	
+	 @OneToOne
+	    @JoinColumn(name = "Classes_id")
+	    private Classes Classs;
 
 	public Divisions() {
 		super();
