@@ -8,4 +8,9 @@ public interface SessionService {
 	
 	public String getAllSessionsByPagination(Integer pageNo,Integer pageSize,String sortBy,Direction sortOrder,int isPagination);
 
+	public Session updatesissions(Session session1);
+	
+	public String deleteById(Integer id);
+	
+	public String getSessionById(Integer id1);
 }

@@ -36,7 +36,7 @@ public ResponseEntity<?> addDivisions(@RequestBody Divisions div) {
 	return new ResponseEntity<>(divservices.saveclasses(div),HttpStatus.OK);
 }
 
-@GetMapping("/{divid}")
+@GetMapping("/div/{id}")
 public ResponseEntity<?> getDivisionById(@PathVariable Long id){
 	return new ResponseEntity<> (divservices.getDivisionById(id),HttpStatus.OK);
 	
