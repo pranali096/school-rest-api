@@ -8,7 +8,7 @@ public interface Divisionservices {
 			int isPagination);
 	
 	
-	public Divisions saveclasses(Divisions div);
+	public Divisions saveDivisions(Divisions div);
 	
 	public String getDivisionById(Long id);
 	

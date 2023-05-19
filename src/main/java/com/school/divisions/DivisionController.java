@@ -30,10 +30,10 @@ public ResponseEntity<?>getAllDivisions(@RequestParam(defaultValue = "0") Intege
 	return new ResponseEntity<> (divservices.getAllDivisions(pageNo, pageSize, sortBy, sortOrder, isPagination),HttpStatus.OK);
 				
 }
-@PostMapping()
+@PostMapping
 public ResponseEntity<?> addDivisions(@RequestBody Divisions div) {
 	
-	return new ResponseEntity<>(divservices.saveclasses(div),HttpStatus.OK);
+	return new ResponseEntity<>(divservices.saveDivision(div),HttpStatus.OK);
 }
 
 @GetMapping("/div/{id}")

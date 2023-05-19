@@ -43,7 +43,7 @@ public class Divisionservicesimpl implements Divisionservices{
 	}
 
 	@Override
-	public Divisions saveclasses(Divisions div) {
+	public Divisions saveDivisions(Divisions div) {
 		
 		return  divrepository.save(div);
 	}
