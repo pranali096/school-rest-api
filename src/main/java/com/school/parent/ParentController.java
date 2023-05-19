@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,11 +23,7 @@ public class ParentController {
 	@Autowired 
 	ParentService parentservice;
 	
-	@GetMapping
-	public ResponseEntity<?>getAllParentlist(){
-		return new ResponseEntity<>(parentservice.getAllParentList(),HttpStatus.OK);
-		
-	}
+
 	
 	@PostMapping
 	public ResponseEntity<?> addparent(@RequestBody Parent parent) {
@@ -45,6 +43,12 @@ public class ParentController {
 	@PutMapping("/updateparentdata")
 	public ResponseEntity<?>updateParent(@RequestBody Parent parents ){
 		return new ResponseEntity<>(parentservice.saveParent(parents),HttpStatus.OK) ;
+		
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteByid(@PathVariable Long id){
+		return new ResponseEntity<>(parentservice.deleteById(id),HttpStatus.OK);
 		
 	}
 }

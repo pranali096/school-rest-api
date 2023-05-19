@@ -81,6 +81,12 @@ public class Classesserviceimpl implements Classesservice{
 		return classesrepository.findAll();
 	}
 
+
+	@Override
+	public Classes updatedata(Classes Classes1) {
+		return classesrepository.save(Classes1);
+	}
+
 	
 		
 }

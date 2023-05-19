@@ -15,4 +15,5 @@ public interface Classesservice {
 	
 	public String getAllClassesByPagination(Integer pageNo,Integer pageSize,String sortBy,Direction sortOrder,int isPagination);
 	
+	public Classes updatedata(Classes Classes1);
 }

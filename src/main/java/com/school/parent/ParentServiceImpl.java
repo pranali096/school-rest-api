@@ -2,6 +2,7 @@ package com.school.parent;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,10 +26,6 @@ public class ParentServiceImpl implements ParentService{
 	@Autowired
 	Util util;
 
-	@Override
-	public Iterable<Parent> getAllParentList() {
-		return parentrepository.findAll();
-	}
 
 	@Override
 	public Parent saveParent(Parent parent) {
@@ -54,5 +51,16 @@ public class ParentServiceImpl implements ParentService{
 	@Override
 	public Parent updateParent(Parent parents) {
 		return parentrepository.save(parents);
+	}
+
+	@Override
+	public String deleteById(Long id) {
+		Optional<Parent> par= parentrepository.findById(id);
+		if (par.isEmpty()) {
+			return " Parent is deleted succusefully";
+		}else {
+			throw new RuntimeException(" Parent is failed to delete");
+		}
+	
 	}
 }
