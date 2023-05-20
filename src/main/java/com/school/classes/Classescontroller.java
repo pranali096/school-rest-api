@@ -30,9 +30,9 @@ public class Classescontroller {
 	Classesservice classesservice;
 	
 	@PostMapping("/saveclasses")
-	public ResponseEntity<?> addclasses(@RequestBody Classes classes) {
+	public ResponseEntity<?> addclasses(@RequestBody ClassesDto dto) {
 		
-		return new ResponseEntity<>(classesservice.saveclasses(classes),HttpStatus.OK);
+		return new ResponseEntity<>(classesservice.saveclasses(dto),HttpStatus.OK);
 	}
 	
 	@GetMapping

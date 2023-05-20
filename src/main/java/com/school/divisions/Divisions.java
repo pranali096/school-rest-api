@@ -17,14 +17,18 @@ public class Divisions {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private Long id;
+	private Long did;
 	
 	@Column(name = "divisions")
 	private String Division;
 	
-	 @OneToOne
-	    @JoinColumn(name = "Classes_id")
-	    private Classes Classs;
+
+
+	public Divisions(Long did, String division) {
+		super();
+		this.did = did;
+		Division = division;
+	}
 
 	public Divisions() {
 		super();
@@ -32,11 +36,11 @@ public class Divisions {
 	}
 
 	public Long getId() {
-		return id;
+		return did;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.did = id;
 	}
 
 	public String getDivision() {
@@ -49,7 +53,7 @@ public class Divisions {
 
 	@Override
 	public String toString() {
-		return "Divisions [id=" + id + ", Division=" + Division + "]";
+		return "Divisions [id=" + did + ", Division=" + Division + "]";
 	}
 	
 	

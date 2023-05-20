@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.school.divisions.Divisions;
 
 @Entity
 @Table(name="classes_tb")
@@ -17,6 +21,21 @@ public class Classes {
 	
 	@Column(name="Classes_Name")
 	private String classesName;
+	
+	 @OneToOne
+	    @JoinColumn(name = " Division_id")
+	    private Divisions division;
+	 
+	 
+
+
+
+	public Classes(Long id, String classesName, Divisions division) {
+		super();
+		this.id = id;
+		this.classesName = classesName;
+		this.division = division;
+	}
 
 	public Classes() {
 		super();
@@ -31,18 +50,35 @@ public class Classes {
 		this.id = id;
 	}
 
-	public String getClassName() {
+	public String getClassesName() {
 		return classesName;
 	}
 
-	public void setClassName(String className) {
-		this.classesName = className;
+	public void setClassesName(String classesName) {
+		this.classesName = classesName;
+	}
+
+	public Divisions getDivision() {
+		return division;
+	}
+
+	public void setDivision(Divisions division) {
+		this.division = division;
 	}
 
 	@Override
 	public String toString() {
-		return "Classes [id=" + id + ", className=" + classesName + "]";
+		return "Classes [id=" + id + ", classesName=" + classesName + ", division=" + division + "]";
 	}
+
+
+
+
+
+
+
+
+
 	
 	
 }

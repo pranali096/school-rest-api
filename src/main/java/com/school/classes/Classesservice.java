@@ -5,7 +5,7 @@ import org.springframework.data.domain.Sort.Direction;
 
 public interface Classesservice {
 
-	public  Classes saveclasses( Classes classes);
+	public  String saveclasses( ClassesDto dto);
 	
 	public Iterable<Classes> getAllClasses();
 	
