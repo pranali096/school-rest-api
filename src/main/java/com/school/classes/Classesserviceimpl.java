@@ -71,8 +71,9 @@ public class Classesserviceimpl implements Classesservice {
 		PageRequest page = PageRequest.of(pageNo, pageSize, Sort.by(sortOrder, sortBy));
 		if (isPagination > 0) {
 			Page<Classes> pageResult = classesrepository.findAll(page);
+			List<ClassesDto> csdto= mapper.convertToList(( pageResult.getContent()));
 			LOG.info(" Service: Page is found");
-			return util.objectMapperSuccess(pageResult, " Page is found");
+			return util.objectMapperSuccess(csdto, " Page is found");
 		} else {
 			List<Classes> list = (List<Classes>) classesrepository.findAll();
 			LOG.info("Service : page is not found");
@@ -89,8 +90,11 @@ public class Classesserviceimpl implements Classesservice {
 	}
 
 	@Override
-	public Classes updatedata(Classes Classes1) {
-		return classesrepository.save(Classes1);
+	public String updatedata(ClassesDto cdto) {
+		Classes cl = mapper.converToClassesDto(cdto);
+		Classes classes = classesrepository.save(cl);
+		ClassesDto d = mapper.convertToClasess(classes);
+		return util.objectMapperSuccess(d, "Classes updated");
 	}
 
 }

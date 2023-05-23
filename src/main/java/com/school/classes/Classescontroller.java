@@ -63,8 +63,8 @@ public class Classescontroller {
 	}
 	
 	@PutMapping("/updatedata")
-	public ResponseEntity<?>updateClasses(@RequestBody Classes classes1 ){
-		return new ResponseEntity<>(classesservice.updatedata(classes1),HttpStatus.OK) ;
+	public ResponseEntity<?>updateClasses(@RequestBody ClassesDto cdto ){
+		return new ResponseEntity<>(classesservice.updatedata(cdto),HttpStatus.OK) ;
 		
 	}
 }
