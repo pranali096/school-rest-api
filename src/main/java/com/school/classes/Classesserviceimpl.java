@@ -32,22 +32,26 @@ public class Classesserviceimpl implements Classesservice {
 	@Override
 	public String saveclasses(ClassesDto dto) {
 		Classes c = mapper.converToClassesDto(dto);
-		//return classesrepository.save(c);
-		Classes classes= classesrepository.save(c);
+		// return classesrepository.save(c);
+		Classes classes = classesrepository.save(c);
 		ClassesDto dto1 = mapper.convertToClasess(classes);
-		return util.objectMapperSuccess(dto1,"Classes saved");
+		return util.objectMapperSuccess(dto1, "Classes saved");
 	}
 
 	@Override
-	public String getClassesById(Long id) {
-		Optional<Classes> studid = classesrepository.findById(id);
-		if (studid.isPresent()) {
-			return "Classes id is Found";
-		} else {
-			throw new RuntimeException(" Classes id not Found");
 
-		}
-
+	
+	  public String getClassesById(Long id){
+	 Optional<Classes> studid =classesrepository.findById(id);
+	if (studid.isPresent()) {
+		Classes classobj= studid.get();
+		ClassesDto cdto= mapper.convertToClasess(classobj);
+		
+		return util.objectMapperSuccess(cdto,"class is found");
+	}else {
+		return util.objectMapperError("Class not found");
+	}
+	
 	}
 
 	@Override
@@ -78,8 +82,10 @@ public class Classesserviceimpl implements Classesservice {
 	}
 
 	@Override
-	public Iterable<Classes> getAllClasses() {
-		return classesrepository.findAll();
+	public String getAllClasses() {
+		List<Classes> cl= classesrepository.findAll();
+		List<ClassesDto> dt= mapper.convertToList(cl);
+		return util.objectMapperSuccess(dt, " list of classes");
 	}
 
 	@Override

@@ -1,5 +1,8 @@
 package com.school.classes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.school.divisions.Divisions;
@@ -26,7 +29,30 @@ public class ClassesMapper {
 		dto.setDivisionName(classes.getDivision().getDivision());
 		
 		return dto;
-		
-		
+			
 	}
+	
+	 public List<ClassesDto> convertToList(List<Classes> clist) {
+	        List<ClassesDto> dtolist = new ArrayList<>();
+	        for(Classes cl: clist) {
+	        	   ClassesDto dto = convertToClasess(cl);
+	               dtolist.add(dto);
+	        }
+	        
+		
+	        return dtolist;
+                  
+ }
+//	 
+//	 public List<ClassesDto> convertToClasseslist(List<Classes> clList){
+//		 List<ClassesDto> dolist= new ArrayList<>();
+//		 return dolist;
+//	 }
+//		
+
+	private List<ClassesDto> convertToClasess(List<Classes> clist) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

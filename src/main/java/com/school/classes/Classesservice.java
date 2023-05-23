@@ -7,7 +7,7 @@ public interface Classesservice {
 
 	public  String saveclasses( ClassesDto dto);
 	
-	public Iterable<Classes> getAllClasses();
+	public String getAllClasses();
 	
 	public String getClassesById(Long id);
 	
