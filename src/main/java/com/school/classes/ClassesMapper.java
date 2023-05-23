@@ -21,7 +21,7 @@ public class ClassesMapper {
 		
 	}
 	
-	public ClassesDto convertToClasess(Classes classes) {
+	public ClassesDto convertToClasess(Classes classes) {  //**
 		ClassesDto dto = new ClassesDto();
 		dto.setId(classes.getId());
 		dto.setClassesName(classes.getClassesName());
@@ -35,7 +35,10 @@ public class ClassesMapper {
 	 public List<ClassesDto> convertToList(List<Classes> clist) {
 	        List<ClassesDto> dtolist = new ArrayList<>();
 	        for(Classes cl: clist) {
-	        	   ClassesDto dto = convertToClasess(cl);
+	       	   ClassesDto dto = convertToClasess(cl); //add //**
+	        	//ClassesDto dto= new ClassesDto();
+	        	//dto.setId(cl.getId());
+	        	
 	               dtolist.add(dto);
 	        }
 	        
@@ -50,9 +53,5 @@ public class ClassesMapper {
 //	 }
 //		
 
-	private List<ClassesDto> convertToClasess(List<Classes> clist) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 }
