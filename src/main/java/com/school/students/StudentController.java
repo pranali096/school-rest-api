@@ -33,13 +33,13 @@ public class StudentController {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> addStudents(@RequestBody Students std) {
+	public ResponseEntity<?> addStudents(@RequestBody StudentData std) {
 
 		return new ResponseEntity<>(studentservice.saveStudents(std), HttpStatus.OK);
 	}
 
 	@PutMapping
-	public ResponseEntity<?> UpdateStudents(@RequestBody Students stud) {
+	public ResponseEntity<?> UpdateStudents(@RequestBody StudentData stud) {
 		return new ResponseEntity<>(studentservice.updateStudents(stud), HttpStatus.OK);
 
 	}

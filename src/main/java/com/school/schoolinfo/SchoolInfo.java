@@ -7,7 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="schoolinfo_tb")
 public class SchoolInfo {
 	@Id
@@ -35,78 +43,8 @@ public class SchoolInfo {
 	
 	@Column(name = "phno")
 	private String phNo;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getFounder() {
-		return founder;
-	}
-
-	public void setFounder(String founder) {
-		this.founder = founder;
-	}
-
-	public String getFoundedDate() {
-		return foundedDate;
-	}
-
-	public void setFoundedDate(String foundedDate) {
-		this.foundedDate = foundedDate;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getPhNo() {
-		return phNo;
-	}
-
-	public void setPhNo(String phNo) {
-		this.phNo = phNo;
-	}
-
-	@Override
-	public String toString() {
-		return "SchoolInfo [id=" + id + ", name=" + name + ", founder=" + founder + ", foundedDate=" + foundedDate
-				+ ", address=" + address + ", city=" + city + ", state=" + state + ", phNo=" + phNo + "]";
-	}
-
 	
 	
+
 	
 }

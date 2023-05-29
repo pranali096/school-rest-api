@@ -5,13 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.school.classes.Classes;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+
 @Table(name="divisions_tb")
 public class Divisions {
 	@Id
@@ -24,37 +30,5 @@ public class Divisions {
 	
 
 
-	public Divisions(Long did, String division) {
-		super();
-		this.did = did;
-		Division = division;
-	}
-
-	public Divisions() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public Long getId() {
-		return did;
-	}
-
-	public void setId(Long id) {
-		this.did = id;
-	}
-
-	public String getDivision() {
-		return Division;
-	}
-
-	public void setDivision(String division) {
-		Division = division;
-	}
-
-	@Override
-	public String toString() {
-		return "Divisions [id=" + did + ", Division=" + Division + "]";
-	}
-	
 	
 }

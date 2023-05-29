@@ -7,7 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Session_tb")
 public class Session {
 	@Id
@@ -21,26 +30,6 @@ public class Session {
 //	@OneToMany(mappedBy = "session")
 //	Set<Students> students;
  
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getYear() {
-		return year;
-	}
-
-	public void setYear(String year) {
-		this.year = year;
-	}
-
-	@Override
-	public String toString() {
-		return "Session [id=" + id + ", year=" + year + "]";
-	}
 
 
 

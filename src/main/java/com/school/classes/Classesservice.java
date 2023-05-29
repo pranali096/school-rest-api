@@ -5,7 +5,7 @@ import org.springframework.data.domain.Sort.Direction;
 
 public interface Classesservice {
 
-	public  String saveclasses( ClassesDto dto);
+	public  String saveclasses( ClassesData dat);
 	
 	public String getAllClasses();
 	
@@ -15,5 +15,5 @@ public interface Classesservice {
 	
 	public String getAllClassesByPagination(Integer pageNo,Integer pageSize,String sortBy,Direction sortOrder,int isPagination);
 	
-	public String updatedata(ClassesDto cdto);
+	public String updatedata(ClassesData cdto);
 }

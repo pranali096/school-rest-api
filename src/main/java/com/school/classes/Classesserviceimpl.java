@@ -3,6 +3,7 @@ package com.school.classes;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 
 import javax.transaction.Transactional;
 
@@ -30,34 +31,33 @@ public class Classesserviceimpl implements Classesservice {
 	ClassesMapper mapper;
 
 	@Override
-	public String saveclasses(ClassesDto dto) {
-		Classes c = mapper.converToClassesDto(dto);
-		// return classesrepository.save(c);
+	public String saveclasses(ClassesData dat) {
+		Classes c = ClassesMapper.aClassesDataBuilder().convertToClassesData(dat);
 		Classes classes = classesrepository.save(c);
-		ClassesDto dto1 = mapper.convertToClasess(classes);
-		return util.objectMapperSuccess(dto1, "Classes saved");
+		ClassesData data1 = ClassesMapper.aClassesDataBuilder().convertToClasses(classes);
+		return util.objectMapperSuccess(data1, "Classes saved");
 	}
 
 	@Override
 
-	
-	  public String getClassesById(Long id){
-	 Optional<Classes> studid =classesrepository.findById(id);
-	if (studid.isPresent()) {
-		Classes classobj= studid.get();
-		ClassesDto cdto= mapper.convertToClasess(classobj);
-		
-		return util.objectMapperSuccess(cdto,"class is found");
-	}else {
-		return util.objectMapperError("Class not found");
-	}
-	
+	public String getClassesById(Long id) {
+		Optional<Classes> studid = classesrepository.findById(id);
+		if (studid.isPresent()) {
+			Classes classobj = studid.get();
+			ClassesData cdto = ClassesMapper.aClassesDataBuilder().convertToClasses(classobj);
+
+			return util.objectMapperSuccess(cdto, "Get Class By id");
+		} else {
+			return util.objectMapperError("Get Class by id");
+		}
+
 	}
 
 	@Override
 	public String deleteById(Long cid) {
 		Optional<Classes> op = classesrepository.findById(cid);
 		if (op.isEmpty()) {
+			LOG.info("Class details  delete");
 			return " Classes is deleted succusefully";
 		} else {
 			throw new RuntimeException(" Classes is failed to delete");
@@ -71,12 +71,17 @@ public class Classesserviceimpl implements Classesservice {
 		PageRequest page = PageRequest.of(pageNo, pageSize, Sort.by(sortOrder, sortBy));
 		if (isPagination > 0) {
 			Page<Classes> pageResult = classesrepository.findAll(page);
-			List<ClassesDto> csdto= mapper.convertToList(( pageResult.getContent()));
+			Page<ClassesData> pagedto = pageResult.map(new Function<Classes, ClassesData>() {
+				@Override
+				public ClassesData apply(Classes t) {
+					return ClassesMapper.aClassesDataBuilder().convertToClasses(t);
+				}
+			});
 			LOG.info(" Service: Page is found");
-			return util.objectMapperSuccess(csdto, " Page is found");
+			return util.objectMapperSuccess(pagedto, " Page is found");
 		} else {
 			List<Classes> list = (List<Classes>) classesrepository.findAll();
-			LOG.info("Service : page is not found");
+			LOG.info("Service : page not found");
 			return util.objectMapperSuccess(list, "list of pages");
 		}
 
@@ -84,17 +89,19 @@ public class Classesserviceimpl implements Classesservice {
 
 	@Override
 	public String getAllClasses() {
-		List<Classes> cl= classesrepository.findAll();
-		List<ClassesDto> dt= mapper.convertToList(cl);
+		List<Classes> cl = classesrepository.findAll();
+		List<ClassesData> dt = ClassesMapper.aClassesDataBuilder().convertToList(cl);
+		LOG.info("Get list of all classes");
 		return util.objectMapperSuccess(dt, " list of classes");
 	}
 
 	@Override
-	public String updatedata(ClassesDto cdto) {
-		Classes cl = mapper.converToClassesDto(cdto);
+	public String updatedata(ClassesData cdto) {
+		Classes cl = ClassesMapper.aClassesDataBuilder().convertToClassesData(cdto);
 		Classes classes = classesrepository.save(cl);
-		ClassesDto d = mapper.convertToClasess(classes);
-		return util.objectMapperSuccess(d, "Classes updated");
+		ClassesData d = ClassesMapper.aClassesDataBuilder().convertToClasses(classes);
+		LOG.info("Class details updated ");
+		return util.objectMapperSuccess(d, "Class details updated");
 	}
 
 }

@@ -6,52 +6,40 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.school.divisions.Divisions;
+
 @Component
 public class ClassesMapper {
-	
-	public Classes converToClassesDto(ClassesDto dto) {
-		Classes classObj= new Classes();
-		classObj.setId(dto.getId());
-		classObj.setClassesName(dto.getClassesName());
-		Divisions div = new Divisions(dto.getDivisionId(), dto.getDivisionName());
-		classObj.setDivision(div);
-		
-		return classObj;
-			
-		
+	public static ClassesMapper aClassesDataBuilder() {
+		return new ClassesMapper();
 	}
-	
-	public ClassesDto convertToClasess(Classes classes) {  //**
-		ClassesDto dto = new ClassesDto();
-		dto.setId(classes.getId());
-		dto.setClassesName(classes.getClassesName());
-		dto.setDivisionId(classes.getDivision().getId());
-		dto.setDivisionName(classes.getDivision().getDivision());
-		
-		return dto;
-			
-	}
-	
-	 public List<ClassesDto> convertToList(List<Classes> clist) {
-	        List<ClassesDto> dtolist = new ArrayList<>();
-	        for(Classes cl: clist) {
-	       	   ClassesDto dto = convertToClasess(cl); //add //**
-	        	//ClassesDto dto= new ClassesDto();
-	        	//dto.setId(cl.getId());
-	        	
-	               dtolist.add(dto);
-	        }
-	        
-		
-	        return dtolist;
-                  
- }
-//	 
-//	 public List<ClassesDto> convertToClasseslist(List<Classes> clList){
-//		 List<ClassesDto> dolist= new ArrayList<>();
-//		 return dolist;
-//	 }
-//		
 
-	
+	public Classes convertToClassesData(ClassesData cdata) {
+		Divisions ds = Divisions.builder().did(cdata.getId()).Division(cdata.getDivisionName()).build();
+		Classes cla = Classes.builder().id(cdata.getId()).classesName(cdata.getClassesName())
+
+				.division(ds).build();
+		return cla;
+
+	}
+
+	public ClassesData convertToClasses(Classes classes) {
+		ClassesData data = ClassesData.builder().id(classes.getId()).classesName(classes.getClassesName())
+				.divisionId(classes.getDivision().getDid()).divisionName(classes.getDivision().getDivision()).build();
+		return data;
+
+	}
+
+	public List<ClassesData> convertToList(List<Classes> clist) {
+		List<ClassesData> datalist = new ArrayList<>();
+		for (Classes cl : clist) {
+			ClassesData dt = ClassesData.builder().id(cl.getId()).classesName(cl.getClassesName())
+
+					.divisionId(cl.getDivision().getDid()).divisionName(cl.getDivision().getDivision()).build();
+
+			datalist.add(dt);
+		}
+
+		return datalist;
+	}
+
 }
