@@ -44,7 +44,7 @@ public class StudentController {
 
 	}
 
-	@GetMapping("/stud/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<?> getStudentById(@PathVariable Integer id) {
 		return new ResponseEntity<>(studentservice.getStudentsById(id), HttpStatus.OK);
 

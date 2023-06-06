@@ -1,9 +1,5 @@
 package com.school.classes;
 
-import java.lang.invoke.MethodHandles;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
@@ -25,7 +21,7 @@ public class Classescontroller {
 	@Autowired
 	Classesservice classesservice;
 
-	@PostMapping("/saveclasses")
+	@PostMapping("/save")
 	public ResponseEntity<?> addclasses(@RequestBody ClassesData dto) {
 
 		return new ResponseEntity<>(classesservice.saveclasses(dto), HttpStatus.OK);

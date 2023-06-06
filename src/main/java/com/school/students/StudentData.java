@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StudentData {
 
-	private Integer sid;
+	private Integer id;
 	private Integer rollno;
 	private String name;
 	private String address;

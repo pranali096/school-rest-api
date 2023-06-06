@@ -22,6 +22,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Autowired
 	StudentRepository studentrepo;
+	
 	@Autowired
 	Util util;
 
@@ -77,7 +78,7 @@ public class StudentServiceImpl implements StudentService {
 			LOG.info(" student id is present");
 			return util.objectMapperSuccess(sdto, "id is present");
 		} else {
-			throw new RuntimeException(" id is not not ");
+			return util.objectMapperError(op,"id is not present");
 		}
 
 	}
@@ -86,10 +87,11 @@ public class StudentServiceImpl implements StudentService {
 	public String deleteStudentById(Integer sid) {
 		Optional<Students> op = studentrepo.findById(sid);
 		if (op.isEmpty()) {
+			studentrepo.deleteById(sid);
 			LOG.info("Student details  delete succusefully");
-			return " Student datails  delete succusefully";
+			return util.objectMapperSuccess(op,"Student datails  delete succusefully");
 		} else {
-			throw new RuntimeException(" failed to delete Student datails");
+			return util.objectMapperError(op,"failed to delete Student datails");
 		}
 	}
 }

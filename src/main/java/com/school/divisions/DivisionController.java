@@ -33,10 +33,10 @@ public ResponseEntity<?>getAllDivisions(@RequestParam(defaultValue = "0") Intege
 @PostMapping
 public ResponseEntity<?> addDivisions(@RequestBody Divisions div) {
 	
-	return new ResponseEntity<>(divservices.saveDivision(div),HttpStatus.OK);
+	return new ResponseEntity<>(divservices.saveDivisions(div),HttpStatus.OK);
 }
 
-@GetMapping("/div/{id}")
+@GetMapping("/{id}")
 public ResponseEntity<?> getDivisionById(@PathVariable Long id){
 	return new ResponseEntity<> (divservices.getDivisionById(id),HttpStatus.OK);
 	
@@ -45,7 +45,7 @@ public ResponseEntity<?> getDivisionById(@PathVariable Long id){
 
 @PutMapping
 public ResponseEntity<?> UpdateDivision(@RequestBody Divisions divi){
-	return new ResponseEntity<> (divservices.saveDivision(divi),HttpStatus.OK);
+	return new ResponseEntity<> (divservices.updateDivision(divi),HttpStatus.OK);
 		
 }
 

@@ -28,8 +28,10 @@ public class SessionServiceImpl implements SessionService{
 	Util util;
 
 	@Override
-	public Session addSession(Session session) {
-		return sessionrepo.save(session);
+	public String addSession(Session session) {
+		sessionrepo.save(session);
+		LOG.info("Save Session Succusesfully");
+		return util.objectMapperError(session, "Save Session Succusesfully");
 	}
 
 	@Override
@@ -42,25 +44,27 @@ public class SessionServiceImpl implements SessionService{
 			return util.objectMapperSuccess(pageResult," Page is found");
 		}else {
 			List<Session> list=  (List<Session>) sessionrepo.findAll();
-			LOG.info ("Service : Sessionpage is not found");
+			LOG.info ("Service : Sessionpage  not found");
 			return util.objectMapperSuccess(list,"list of pages");
 		}
 			
 		}
 
 	@Override
-	public Session updatesissions(Session session1) {
-		return sessionrepo.save(session1);
+	public String updatesissions(Session session1) {
+		sessionrepo.save(session1);
+		LOG.info("Update Session Succusesfully");
+		return util.objectMapperSuccess(session1, "Update Session Succusesfully");
 	}
 
 	@Override
 	public String deleteById(Integer id) {
-	
 		Optional<Session> op = sessionrepo.findById(id);
 			if (op.isPresent()) {
-				return " Session is deleted succusefully";
+				sessionrepo.deleteById(id);
+				return  util.objectMapperSuccess(op, "delete Session Succusesfully");
 			}else {
-				throw new RuntimeException(" Session is failed to delete");
+				return util.objectMapperError(op," failed to delete session");
 			}
 	}
 
@@ -69,10 +73,10 @@ public class SessionServiceImpl implements SessionService{
 		Optional<Session> sion= sessionrepo.findById(id1);
 		if(sion.isPresent()) {
 			LOG.info("Get Session  Succusefully");
-			return " Get Session  Succusefully";
+			return util.objectMapperSuccess(sion, "Get Session  Succusefully");
 		}else {
 			
-		throw new RuntimeException(" get Session is not Succusefully" );
+		return util.objectMapperError(sion,"not found session");
 	}
 	}
 }

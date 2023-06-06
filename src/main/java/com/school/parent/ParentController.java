@@ -1,7 +1,5 @@
 package com.school.parent;
 
-import java.security.PublicKey;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
@@ -50,5 +48,9 @@ public class ParentController {
 	public ResponseEntity<?> deleteByid(@PathVariable Long id){
 		return new ResponseEntity<>(parentservice.deleteById(id),HttpStatus.OK);
 		
+	}
+	@GetMapping("/pa/{id}")
+	public ResponseEntity<?> getParentById(@PathVariable Long id) {
+		return new ResponseEntity<>(parentservice.getParentById(id), HttpStatus.OK);
 	}
 }

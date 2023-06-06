@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.school.classes.Classes;
@@ -37,45 +38,52 @@ public class Divisionservicesimpl implements Divisionservices{
 		}else {
 			List<Divisions> list1=(List<Divisions>)divrepository.findAll();
 			LOG.info(" Service: Page is  not found");
-			return util.objectMapperSuccess(list1,"Page is not found") ;
+			return util.objectMapperSuccess(list1,"List of Division pages") ;
 		}
 
 	}
 
-	@Override
-	public Divisions saveDivisions(Divisions div) {
-		
-		return  divrepository.save(div);
-	}
+
 
 	@Override
 	public String getDivisionById(Long id) {
 		Optional<Divisions> dop= divrepository.findById(id);
 		if(dop.isPresent()) {
 			LOG.info("Get Division  Succusefully");
-			return " Get Division  Succusefully";
+			return util.objectMapperSuccess(dop,"Get Division  Succusefully");
 		}else {
 			
-		throw new RuntimeException(" get Division is not Succusefully" );
+		return util.objectMapperError(dop," not present division" );
 	}
 	
 	}
 
 	@Override
-	public Divisions saveDivision(Divisions divi) {
-
-    return divrepository.save(divi);
+	public String updateDivision(Divisions divi) {
+		divrepository.save(divi);
+		LOG.info("update division Succussesfully");	
+    return util.objectMapperSuccess(divi, "update division succusesfully");
 	
 }
 
 	@Override
 	public String deleteById(Long did) {
 			Optional<Divisions> op = divrepository.findById(did);
-			if (op.isEmpty()) {
-				return " Divisions is deleted succusefully";
+			if (op.isPresent()) {
+				 divrepository.deleteById(did);
+				return  util.objectMapperSuccess(op," Divisions is deleted succusefully");
 			}else {
-				throw new RuntimeException(" Divisions is failed to delete");
+				return util.objectMapperError(op," division not delete succusesfully");
 			}	
+	}
+
+
+
+	@Override
+	public String saveDivisions(Divisions div) {
+		LOG.info("Save Division Succusesfully");
+		Divisions division = divrepository.save(div);
+		return util.objectMapperSuccess(division, "Save Division Succusesfully");
 	}
 
 }

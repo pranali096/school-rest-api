@@ -45,10 +45,9 @@ public class Classesserviceimpl implements Classesservice {
 		if (studid.isPresent()) {
 			Classes classobj = studid.get();
 			ClassesData cdto = ClassesMapper.aClassesDataBuilder().convertToClasses(classobj);
-
 			return util.objectMapperSuccess(cdto, "Get Class By id");
 		} else {
-			return util.objectMapperError("Get Class by id");
+			return util.objectMapperError(studid," class not found");
 		}
 
 	}
@@ -56,11 +55,12 @@ public class Classesserviceimpl implements Classesservice {
 	@Override
 	public String deleteById(Long cid) {
 		Optional<Classes> op = classesrepository.findById(cid);
-		if (op.isEmpty()) {
+		if (op.isPresent()) {
+			classesrepository.deleteById(cid);
 			LOG.info("Class details  delete");
-			return " Classes is deleted succusefully";
+			return util.objectMapperSuccess(op, "delete Class succusesfully");
 		} else {
-			throw new RuntimeException(" Classes is failed to delete");
+			return util.objectMapperError(op,"failed to delete class");
 		}
 	}
 

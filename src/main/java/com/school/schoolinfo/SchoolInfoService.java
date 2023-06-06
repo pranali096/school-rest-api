@@ -6,7 +6,7 @@ public interface SchoolInfoService {
  
 	public List<SchoolInfo> getAllSchoolInfo();
 	
-	public SchoolInfo saveschoolinfo(SchoolInfo info);
+	public String saveschoolinfo(SchoolInfo info);
 	
-	public SchoolInfo updateschoolonfo(SchoolInfo sinfo);
+	public String updateschoolonfo(SchoolInfo sinfo);
 }

@@ -31,7 +31,7 @@ public class Students {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private Integer sid;
+	private Integer id;
 
 	@Column(name = "roll_No")
 	private Integer rollno;

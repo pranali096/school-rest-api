@@ -27,7 +27,7 @@ public class StudentBuilder {
 
 		Students std = Students.builder().address(stdata.getAddress()).name(stdata.getName()).mobno(stdata.getMobno())
 				.Birthdate(stdata.getBirthdate())
-				.rollno(stdata.getRollno()).sid(stdata.getSid()).parent(pa).Clasessobj(cla).session(sion)
+				.rollno(stdata.getRollno()).id(stdata.getId()).parent(pa).Clasessobj(cla).session(sion)
 				.build();
 		return std;
 
@@ -35,7 +35,7 @@ public class StudentBuilder {
 	
 	StudentData convertToStudent(Students stud) {
 		StudentData data= StudentData.builder()
-				.address(stud.getAddress()).mobno(stud.getMobno()).rollno(stud.getRollno()).sid(stud.getSid()).Birthdate(stud.getBirthdate())
+				.address(stud.getAddress()).mobno(stud.getMobno()).rollno(stud.getRollno()).id(stud.getId()).Birthdate(stud.getBirthdate())
 				.cid(stud.getClasessobj().getId())
 				.classesName(stud.getClasessobj().getClassesName())
 				.did(stud.getClasessobj().getDivision().getDid())
@@ -54,7 +54,7 @@ public class StudentBuilder {
 		for(Students ts: slist) {
 			
 			StudentData datas = StudentData.builder()
-					.address(ts.getAddress()).mobno(ts.getMobno()).rollno(ts.getRollno()).sid(ts.getSid())
+					.address(ts.getAddress()).mobno(ts.getMobno()).rollno(ts.getRollno()).id(ts.getId())
 					.cid(ts.getClasessobj().getId()).Birthdate(ts.getBirthdate())
 					.classesName(ts.getClasessobj().getClassesName())
 					.did(ts.getClasessobj().getDivision().getDid())
